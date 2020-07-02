@@ -12,10 +12,16 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       #本来はトピック一覧に飛ぶようにする
-      redirect_to @user
+      log_in @user
+      redirect_to user
     else
       render 'new'
     end
+  end
+  
+  def destroy
+    log_out
+    redirect_to root_url
   end
   
   
