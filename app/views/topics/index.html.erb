@@ -1,0 +1,9 @@
+<% provide(:title, 'Topic一覧') %>
+<h1>トピック一覧</h1>
+<ul class="topics">
+  <% @topics.each do |topic| %>
+    <li>
+      <%= link_to topic.title, topic %>
+    </li>
+  <% end %>
+</ul>
