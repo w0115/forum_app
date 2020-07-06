@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @comments = @user.comments.paginate(page: params[:page])
   end
   
   def new
@@ -13,7 +14,7 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user
       #トピック一覧に飛ぶ
-      redirect_to ("/topics")
+      redirect_to topics_path
     else
       render 'new'
     end

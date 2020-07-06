@@ -1,5 +1,7 @@
 <% provide(:title, 'Topic一覧') %>
+<%= link_to "ログアウト", logout_path, method: :delete %>
 <h1>トピック一覧</h1>
+ <%= link_to "新規作成", "/topics/new" %>
 <ul class="topics">
   <% @topics.each do |topic| %>
     <li>

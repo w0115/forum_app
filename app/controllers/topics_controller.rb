@@ -17,7 +17,7 @@ class TopicsController < ApplicationController
     @topic = Topic.new(topic_params)
     @topic.user_id = current_user.id
     @topic.save
-    redirect_to Topic
+    redirect_to topics_path
   end
   
   private
