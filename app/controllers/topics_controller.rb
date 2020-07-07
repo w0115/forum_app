@@ -6,6 +6,8 @@ class TopicsController < ApplicationController
   
   def show
     @topic = Topic.find(params[:id])
+    @comments = @topic.comments
+    @comment = Comment.new
     @user = @topic.user_id
   end
   
@@ -27,3 +29,13 @@ class TopicsController < ApplicationController
     end
     
 end
+
+#<div class="row">
+#  <div class="col-md-6 col-md-offset-3">
+#    <%= form_for (@comment) do |f| %>
+#      <%= f.text_field :content %>
+#      
+#      <%= f.submit 'コメントする' %>
+#    <% end %>
+#  </div>
+#</div>
