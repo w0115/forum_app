@@ -1,5 +1,5 @@
 class Topic < ApplicationRecord
-  belongs_to :user
-  has_many :comments
   validates :title, presence: true
+  belongs_to :user
+  has_many :comments, dependent: :destroy
 end

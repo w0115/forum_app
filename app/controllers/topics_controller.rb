@@ -6,9 +6,13 @@ class TopicsController < ApplicationController
   
   def show
     @topic = Topic.find(params[:id])
-    @comments = @topic.comments
-    @comment = Comment.new
     @user = @topic.user_id
+    if Comment.where.not(user_id: "user_id == Blacklist.find(params[:user_id])")
+      #ブラックリストに入っているユーザーのコメントは非表示にする
+      @comments = @topic.comments
+      @comment = Comment.new
+      
+    end
   end
   
   def new

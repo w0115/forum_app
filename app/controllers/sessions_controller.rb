@@ -5,10 +5,15 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by(email: params[:session][:email].downcase)
+    #ログインしようとしているユーザーがブラックリストに入っているか確認する
+    
+    #if user == Blacklist.find_by(params[:user_id])
 
+      #redirect_to ('https://www.google.com')
+    #els
     if user && user.authenticate(params[:session][:password])
       # ユーザーログイン後にトピック一覧のページに飛ぶ
-      session[:user_id] = user.id
+      log_in(user)
       redirect_to topics_path
     else
       flash.now[:danger] = 'メールアドレスもしくはパスワードが違います'

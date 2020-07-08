@@ -4,11 +4,13 @@ class CommentsController < ApplicationController
                            content: params[:comment][:content],
                            topic_id: params[:comment][:topic_id])
     if @comment.save
-      flash[:notice] = "コメントを投稿しました。"
+      flash[:notice] = "コメントを投稿しました"
       redirect_back(fallback_location: topic_path(:id))
     else
       redirect_back(fallback_location: topic_path(:id))
     end
   end
   
+  
+
 end
