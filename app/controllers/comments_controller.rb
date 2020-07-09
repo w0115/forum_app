@@ -1,8 +1,8 @@
 class CommentsController < ApplicationController
+  
   def create
-    @comment = Comment.new(user_id: current_user.id,
-                           content: params[:comment][:content],
-                           topic_id: params[:comment][:topic_id])
+    @comment = Comment.new(comment_params)
+    @comment.user_id = current_user.id
     if @comment.save
       flash[:notice] = "コメントを投稿しました"
       redirect_back(fallback_location: topic_path(:id))
@@ -11,6 +11,13 @@ class CommentsController < ApplicationController
     end
   end
   
+  
+  
+  private
+    
+    def comment_params
+      params.require(:comment).permit(:user_id, :content, :topic_id, :flag)
+    end
   
 
 end

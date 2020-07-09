@@ -4,6 +4,7 @@ class CreateComments < ActiveRecord::Migration[5.1]
       t.text :content
       t.integer :user_id
       t.integer :topic_id
+      t.boolean :flag, default: true
       t.timestamps
     end
   end

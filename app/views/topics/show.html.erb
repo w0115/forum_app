@@ -4,9 +4,11 @@
 
 <ul class="comments">
   <% @comments.each do |comment| %>
-    <li>
-      <%= comment.content %>
-    </li>
+    <% if comment.flag != false %>
+      <li>
+        <%= comment.content %>
+      </li>
+    <% end %>
   <% end %>
 </ul>
 

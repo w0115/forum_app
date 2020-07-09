@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20200707065252) do
     t.text "content"
     t.integer "user_id"
     t.integer "topic_id"
+    t.boolean "flag", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -7,12 +7,10 @@ class TopicsController < ApplicationController
   def show
     @topic = Topic.find(params[:id])
     @user = @topic.user_id
-    if Comment.where.not(user_id: "user_id == Blacklist.find(params[:user_id])")
       #ブラックリストに入っているユーザーのコメントは非表示にする
-      @comments = @topic.comments
-      @comment = Comment.new
-      
-    end
+    @comments = Comment.where(topic_id: @topic.id)
+    @comment = Comment.new
+    
   end
   
   def new
@@ -34,7 +32,7 @@ class TopicsController < ApplicationController
   private
     
     def topic_params
-      params.require(:topic).permit(:user_id, :title)
+      params.require(:topic).permit(:user_id, :title, :flag)
     end
     
 end
