@@ -6,12 +6,13 @@ class BlacklistsController < ApplicationController
   
   def create
     @blacklist = Blacklist.new(blacklist_params)
-    @user = User.select("id").where(id: @blacklist.user_id)
-    if @blacklist.user_id ==  @user[0].id
+    @user_blacklist = User.select("id").where(id: @blacklist.user_id)
+    if @blacklist.user_id ==  @user_blacklist[0].id
       @blacklist.save
-      @comment = Comment.where(user_id: @blacklist.user_id).update_all(:flag => false)
-      
       #コメントを非表示になるようにしたりログインできないようにする
+      @comment = Comment.where(user_id: @blacklist.user_id).update_all(:flag => false)
+      @topic   = Topic.where(user_id: @blacklist.user_id).update_all(:flag => false)
+      @user    = User.where(id: @blacklist.user_id).update_all(:flag => false)
       flash[:notice] = "ブラックリストに登録しました"
       redirect_to topics_path
     else

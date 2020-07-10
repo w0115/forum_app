@@ -7,11 +7,9 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:session][:email].downcase)
     #ログインしようとしているユーザーがブラックリストに入っているか確認する
     
-    #if user == Blacklist.find_by(params[:user_id])
-
-      #redirect_to ('https://www.google.com')
-    #els
-    if user && user.authenticate(params[:session][:password])
+    if user.flag == false 
+      redirect_to ('https://www.google.com')
+    elsif user && user.authenticate(params[:session][:password])
       # ユーザーログイン後にトピック一覧のページに飛ぶ
       log_in(user)
       redirect_to topics_path

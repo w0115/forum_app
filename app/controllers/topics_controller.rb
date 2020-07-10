@@ -7,7 +7,6 @@ class TopicsController < ApplicationController
   def show
     @topic = Topic.find(params[:id])
     @user = @topic.user_id
-      #ブラックリストに入っているユーザーのコメントは非表示にする
     @comments = Comment.where(topic_id: @topic.id)
     @comment = Comment.new
     
@@ -32,17 +31,7 @@ class TopicsController < ApplicationController
   private
     
     def topic_params
-      params.require(:topic).permit(:user_id, :title, :flag)
+      params.require(:topic).permit(:user_id, :title)
     end
     
 end
-
-#<div class="row">
-#  <div class="col-md-6 col-md-offset-3">
-#    <%= form_for (@comment) do |f| %>
-#      <%= f.text_field :content %>
-#      
-#      <%= f.submit 'コメントする' %>
-#    <% end %>
-#  </div>
-#</div>

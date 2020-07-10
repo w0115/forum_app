@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20200707065252) do
   create_table "topics", force: :cascade do |t|
     t.integer "user_id"
     t.text "title"
+    t.boolean "flag", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -38,14 +39,9 @@ ActiveRecord::Schema.define(version: 20200707065252) do
     t.string "email"
     t.string "password_digest"
     t.boolean "admin", default: false
-    t.string "activation_digest"
-    t.boolean "activated", default: false
-    t.datetime "activated_at"
-    t.string "reset_digest"
-    t.datetime "reset_sent_at"
+    t.boolean "flag", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
 end
