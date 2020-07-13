@@ -7,12 +7,15 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:session][:email].downcase)
     #ログインしようとしているユーザーがブラックリストに入っているか確認する
     
-    if user.flag == false 
-      redirect_to ('https://www.google.com')
-    elsif user && user.authenticate(params[:session][:password])
+    
+    if user && user.authenticate(params[:session][:password])
       # ユーザーログイン後にトピック一覧のページに飛ぶ
-      log_in(user)
-      redirect_to topics_path
+      if user.flag == false
+        redirect_to ('https://www.google.com')
+      else
+        log_in(user)
+        redirect_to topics_path
+      end
     else
       flash.now[:danger] = 'メールアドレスもしくはパスワードが違います'
       render 'new' #ログイン画面に戻る
@@ -21,6 +24,7 @@ class SessionsController < ApplicationController
 
   def destroy
     log_out if logged_in?
-    redirect_to root_url
+    redirect_to root_url and return
   end
+  
 end

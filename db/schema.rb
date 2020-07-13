@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20200710041047) do
     t.boolean "flag", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "admin"
+    t.boolean "admin", default: false
   end
 
 end

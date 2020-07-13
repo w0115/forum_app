@@ -1,18 +1,24 @@
 class BlacklistsController < ApplicationController
+  before_action :authenticate_user
+  before_action :admin_user, only: [:new]
   
   def new
     @blacklist = Blacklist.new
   end
   
   def create
-    @blacklist = Blacklist.new(blacklist_params)
-    @user_blacklist = User.select("id").where(id: @blacklist.user_id)
-    if @blacklist.user_id ==  @user_blacklist[0].id
+    @blacklist = Blacklist.create(blacklist_params)
+    @user = User.select("id").where(id: @blacklist.user_id)
+    if @user[0].blank?
+      flash[:danger] = "ブラックリストに登録できませんでした"
+      redirect_back(fallback_location: new_blacklist_path)
+      
+    elsif  @blacklist.user_id ==  @user[0].id
       @blacklist.save
       #コメントを非表示になるようにしたりログインできないようにする
-      @comment = Comment.where(user_id: @blacklist.user_id).update_all(:flag => false)
-      @topic   = Topic.where(user_id: @blacklist.user_id).update_all(:flag => false)
-      @user    = User.where(id: @blacklist.user_id).update_all(:flag => false)
+      Comment.where(user_id: @blacklist.user_id).update_all(:flag => false)
+      Topic.where(user_id: @blacklist.user_id).update_all(:flag => false)
+      User.where(id: @blacklist.user_id).update_all(:flag => false)
       flash[:notice] = "ブラックリストに登録しました"
       redirect_to topics_path
     else
@@ -26,4 +32,9 @@ class BlacklistsController < ApplicationController
     def blacklist_params
       params.require(:blacklist).permit(:user_id)
     end
+    
+    def admin_user
+      redirect_to topics_path unless current_user.admin?
+    end
+    
 end

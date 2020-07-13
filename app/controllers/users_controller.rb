@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  
+
   def show
     @user = User.find(params[:id])
   end
@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      log_in @user
+      session[:user_id] = @user.id
       #トピック一覧に飛ぶ
       redirect_to topics_path
     else

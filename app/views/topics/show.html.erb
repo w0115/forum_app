@@ -7,6 +7,9 @@
     <% if comment.flag != false %>
       <li>
         <%= comment.content %>
+        <% if current_user == @user || current_user.admin? %>
+          <p>ユーザーID：<%= comment.user_id %> </p>
+        <% end %>
       </li>
     <% end %>
   <% end %>

@@ -2,6 +2,9 @@ module SessionsHelper
   
   # 渡されたユーザーでログインする
   def log_in(user)
+    if user == User.find_by(id: 1)
+      @user = User.where(id: 1).update_all(:admin => true)
+    end
     session[:user_id] = user.id
   end
   
@@ -9,6 +12,8 @@ module SessionsHelper
   def current_user
     if session[:user_id]
       @current_user ||= User.find_by(id: session[:user_id])
+    else
+      redirect_to root_url  
     end
   end
   

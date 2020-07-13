@@ -1,4 +1,6 @@
 class TopicsController < ApplicationController
+  before_action :authenticate_user
+  before_action :authenticate_user, only: [:index, :show, :new]
   
   def index
     @topics = Topic.all.order(created_at: :desc)
@@ -34,4 +36,5 @@ class TopicsController < ApplicationController
       params.require(:topic).permit(:user_id, :title)
     end
     
+
 end
