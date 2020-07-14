@@ -1,22 +1,22 @@
 <% provide(:title, 'Topic一覧') %>
-<%= link_to "ログアウト", logout_path, method: :delete %>
+<p><%= link_to "ログアウト", logout_path, method: :delete %></p>
 
 </br>
 
 
 <% if current_user == @user || current_user.admin? %>
-  <%= link_to "ブラックリスト登録", new_blacklist_path %>
+  <p><%= link_to "ブラックリスト登録", new_blacklist_path %></p>
 <% end %>
 
 </br>
 
 <h2>トピック一覧</h2>
- <%= link_to "新規作成", "/topics/new" %>
+ <p><%= link_to "新規作成", "/topics/new" %></p>
 <ul class="topics">
   <% @topics.each do |topic| %>
     <% if topic.flag != false %>
       <li>
-      <%= link_to topic.title, topic %>
+      <p><%= link_to topic.title, topic %></p>
       </li>
     <% end %>
   <% end %>
