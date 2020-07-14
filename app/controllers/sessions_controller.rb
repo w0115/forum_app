@@ -5,14 +5,13 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by(email: params[:session][:email].downcase)
-    #ログインしようとしているユーザーがブラックリストに入っているか確認する
-    
     
     if user && user.authenticate(params[:session][:password])
-      # ユーザーログイン後にトピック一覧のページに飛ぶ
+      #ログインしようとしているユーザーがブラックリストに入っているか確認する
       if user.flag == false
         redirect_to ('https://www.google.com')
       else
+        # ユーザーログイン後にトピック一覧のページに飛ぶ
         log_in(user)
         redirect_to topics_path
       end
