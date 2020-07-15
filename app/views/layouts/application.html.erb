@@ -11,7 +11,9 @@
 
   <body>
     <header>
-        <h1>匿名掲示板サイト</h1>
+      <div class="container">
+        <h1><%= link_to "匿名掲示板サイト", '/topics', id: "logo" %></h1>
+      </div>
     </header>
     <%= yield %>
     <%= debug(params) if Rails.env.development? %>
