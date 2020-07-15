@@ -52,7 +52,3 @@ Backtrace:
 /home/ec2-user/.rvm/gems/ruby-2.6.3/bin/ruby_executable_hooks:24:in `eval'
 /home/ec2-user/.rvm/gems/ruby-2.6.3/bin/ruby_executable_hooks:24:in `<main>'
 */
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Error: File to import not found or unreadable: bootstrap-sprockets.\A         on line 1 of /home/ec2-user/environment/forum_app/app/assets/stylesheets/custom.scss\A \A 1: @import \"bootstrap-sprockets\";\A 2: @import \"bootstrap\";\A 3: \A 4: /* universal */\A 5: \A 6: body {"; }
