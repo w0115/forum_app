@@ -15,12 +15,14 @@
     <![endif]-->
 
   <body>
-    <header>
+
       <div class="container">
-        <h1><%= link_to "匿名掲示板サイト", '/topics', id: "logo" %></h1>
+        <%= link_to "匿名掲示板サイト", '', id: "logo" %>
       </div>
-    </header>
+
+    <div class="container">
     <%= yield %>
+    </div>
     <%= debug(params) if Rails.env.development? %>
   </body>
 </html>
