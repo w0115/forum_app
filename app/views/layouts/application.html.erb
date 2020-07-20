@@ -12,18 +12,24 @@
   <%= render 'layouts/shim' %>
 
   <body>
-    <div id="container">
-        <%= render "layouts/header" %>
+    <div class="container">
+      <%= render "layouts/header" %>
+    </div>
+    <div class="container">
       <main>
         <%= yield %>
       </main>
+    </div>
+    <div class="container">
       <aside id="sidebar">
         <%= render "layouts/sidebar" %>
       </aside>
+    </div>
+    <div class="container">
       <footer>
         <%= render "layouts/footer" %>
       </footer>
-      <%= debug(params) if Rails.env.development? %>
     </div>
+      <%= debug(params) if Rails.env.development? %>
   </body>
 </html>
