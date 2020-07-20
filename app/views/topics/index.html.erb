@@ -1,14 +1,4 @@
-<% provide(:title, 'Topic一覧') %>
-<p><%= link_to "ログアウト", logout_path, method: :delete %></p>
-
-</br>
-
-
-<% if current_user == @user || current_user.admin? %>
-  <p><%= link_to "ブラックリスト登録", new_blacklist_path %></p>
-<% end %>
-
-</br>
+<% provide(:title, 'トピック一覧') %>
 
 <h2>トピック一覧</h2>
  <p><%= link_to "新規作成", "/topics/new" %></p>
