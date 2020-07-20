@@ -3,14 +3,14 @@
     <%= link_to "匿名掲示板サイト", '#', id: "logo" %>
   </div>
   
-  <% if logged_in? %>
-    <nav class="nav navbar-nav navbar-right">
+  <nav>
+    <% if logged_in? %>
       <ul>
         <% if current_user == @user || current_user.admin? %>
           <li><%= link_to "ブラックリスト登録", new_blacklist_path %></li>
         <% end %>
         <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
       </ul>
-    </nav>
-  <% end %>
+    <% end %>
+  </nav>
 </header>

@@ -1,5 +1,4 @@
 <% provide(:title, @topic.title) %>
-
   <h2><%= @topic.title %></h2>
   <p>作成者ID： <%= @user_id %></p>
 
@@ -7,14 +6,12 @@
     <ul class="comments">
       <% @comments.each do |comment| %>
         <% if comment.flag != false %>
-          <li>
-            <tr>
-              <% if current_user == @user_id || current_user.admin? %>
-                <td>ユーザーID：<%= comment.user_id %></td>
-              <% end %>
-              <td><%= comment.content %></td>
-            </tr>
-          </li>
+          <tr>
+            <% if current_user == @user_id || current_user.admin? %>
+              <td>ユーザーID：<%= comment.user_id %></td>
+            <% end %>
+            <td><%= comment.content %></td>
+          </tr>
         <% end %>
       <% end %>
     </ul>
