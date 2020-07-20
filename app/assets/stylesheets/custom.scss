@@ -48,6 +48,7 @@ h2 {
 p {
   font-size: 1.1em;
   line-height: 1.7em;
+  text-align: center;
 } 
 
 /* header */
@@ -70,4 +71,11 @@ p {
 
 header ul{
   text-align: right;
+}
+
+header li {
+  width: 140px;
+  text-align: center;
+  background-color: #333;
+  display: inline-block;
 }
