@@ -3,18 +3,18 @@
   <h2>作成者ID： <%= @user_id %></h2>
 
   <table>
-    <ul class="comments">
+    <div class="center">
       <% @comments.each do |comment| %>
         <% if comment.flag != false %>
-          <tr>
-            <% if current_user == @user_id || current_user.admin? %>
-              <td>ユーザーID：<%= comment.user_id %></td>
-            <% end %>
-            <td><%= comment.content %></td>
-          </tr>
+          <% if current_user == @user_id || current_user.admin? %>
+            <p>ユーザーID：<%= comment.user_id %></p>
+          <% end %>
+          <div class="comments">
+            <p><%= comment.content %></p>
+          </div>
         <% end %>
       <% end %>
-    </ul>
+    </div>
   </table>
 
   <div class="row">
