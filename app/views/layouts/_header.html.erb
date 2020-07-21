@@ -1,13 +1,18 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
+<header class="navbar navbar-fixed-top navbar-inverse" style="background-color:#8a2be2;">
   <div class="container">
     <%= link_to "匿名掲示板サイト", '#', id: "logo" %>
     <nav>
       <% if logged_in? %>
         <ul class="nav navbar-nav navbar-right">
           <% if current_user == @user || current_user.admin? %>
-            <li><%= link_to "ブラックリスト登録", new_blacklist_path %></li>
+            <li>
+              <a class="nav-link" href="/blacklists/new">ブラックリスト登録</a>
+            </li>
           <% end %>
-          <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
+          <li>
+            
+            <%= link_to "ログアウト", logout_path, method: :delete %>
+          </li>
         </ul>
       <% end %>
     </nav>
