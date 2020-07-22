@@ -1,4 +1,5 @@
 <% provide(:title, 'トピック一覧') %>
+
 <div class="topics">
   <h1>トピック一覧</h1>
   <h2><%= link_to "新規作成", "/topics/new" %></h2>
@@ -8,5 +9,4 @@
           <p><%= link_to topic.title, topic %></p>
         <% end %>
       <% end %>
-
 </div>
