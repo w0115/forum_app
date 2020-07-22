@@ -2,3 +2,41 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/* topics */
+
+.topics {
+  width: calc(100% - 330px);
+  text-align: left;
+  p {
+    text-align: center;
+    border-bottom: 1px solid #555;
+    margin: 50px;
+  }
+}
+
+
+/* topic */
+
+.return {
+  padding: 50px;
+}
+
+.comments {
+  width: calc(100% - 330px);
+  max-width: 1000px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 50px;
+  margin: 0 auto;
+  background-color: #fffff0;
+  p {
+    text-align: center;
+    border-bottom: 1px solid #555;
+    margin: 50px;
+  }
+}
+
+.post_comment {
+  text-align: center;
+  margin: 50px;
+}
+

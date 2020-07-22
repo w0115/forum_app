@@ -1,24 +1,23 @@
 <% provide(:title, @topic.title) %>
+
+<div class="return">
+  <p><%= link_to "←トピック一覧に戻る", topics_path %></p>
+</div>
+  
   <h1><%= @topic.title %></h1>
   <h2>作成者ID： <%= @user_id %></h2>
 
-  <table>
-    <div class="center">
-      <% @comments.each do |comment| %>
-        <% if comment.flag != false %>
-          <% if current_user == @user_id || current_user.admin? %>
-            <p>ユーザーID：<%= comment.user_id %></p>
-          <% end %>
-          <div class="comments">
-            <p><%= comment.content %></p>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
-  </table>
 
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3">
+  <div class="comments">
+    <% @comments.each do |comment| %>
+      <% if comment.flag != false %>
+        ユーザーID：<%= comment.user_id %>
+        <p><%= comment.content %></p>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="post_comment">
       <%= form_for @comment, url: comments_path do |f|  %>
     
         <div class="form-group">
@@ -31,9 +30,4 @@
         </div>
       
       <% end %>
-    </div>
   </div>
-
-  </br>
-
-  <p><%= link_to "ホームへ戻る", topics_path %></p>

@@ -1,13 +1,12 @@
 <% provide(:title, 'トピック一覧') %>
+<div class="topics">
+  <h1>トピック一覧</h1>
+  <h2><%= link_to "新規作成", "/topics/new" %></h2>
 
-<h1>トピック一覧</h1>
-<h2><%= link_to "新規作成", "/topics/new" %></h2>
-<p>
-  <div class="center">
-    <% @topics.each do |topic| %>
-      <% if topic.flag != false %>
-        <p><%= link_to topic.title, topic %></p>
+      <% @topics.each do |topic| %>
+        <% if topic.flag != false %>
+          <p><%= link_to topic.title, topic %></p>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
-</p>
+
+</div>
