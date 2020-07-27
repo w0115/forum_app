@@ -1,5 +1,6 @@
 class TopicsController < ApplicationController
   before_action :authenticate_user
+  before_action :correct_user,   only: [:delete]
   
   def index
     @topics = Topic.all.order(created_at: :desc)
@@ -20,7 +21,6 @@ class TopicsController < ApplicationController
     @topic = Topic.new(topic_params)
     @topic.user_id = current_user.id
     if @topic.save
-      flash[:notice] = "トピックを作成しました。"
       redirect_to topics_path
     else
       redirect_back(fallback_location: new_topic_path)

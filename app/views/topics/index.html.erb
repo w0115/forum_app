@@ -2,11 +2,10 @@
 
 <div class="topics">
   <h1>トピック一覧</h1>
-  <h2><%= link_to "新規作成", "/topics/new" %></h2>
 
-      <% @topics.each do |topic| %>
-        <% if topic.flag != false %>
-          <p><%= link_to topic.title, topic %></p>
-        <% end %>
-      <% end %>
+  <% @topics.each do |topic| %>
+    <% if topic.flag != false %>
+      <p><%= link_to topic.title, topic %></p>
+    <% end %>
+  <% end %>
 </div>

@@ -1,16 +1,19 @@
 <% provide(:title, "ブラックリスト登録") %>
+
+<div class="return">
+  <p><%= link_to "←トピック一覧に戻る", topics_path %></p>
+</div>
+  
 <h1>ブラックリスト 登録</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@blacklist) do |f| %>
       
-      <div class="form-group">
-        <%= f.label :user_id, "ユーザーID" %>
+      <div class="center newblacklist-bottom">
+        <%= f.label :user_id, "ユーザーID:" %>
         <%= f.text_field :user_id %>
-      </div>
       
-      <div class="form-group">
       <%= f.submit "ブラックリスト登録", class: "btn btn-primary" %>
       </div>
       
@@ -18,8 +21,33 @@
   </div>
 </div>
 
-</br>
+<table>
+    <tr>
+      <th>ユーザーID</th> <th>Email</th>
+    </tr>
+    <% @users.each do |user| %>
+      <% if user.flag != false %>
+        <tr>
+          <td><%= user.id %></td> <td><%= user.email %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </table>
 
-<div class="form-group">
-  <%= link_to "ホームへ戻る", topics_path %>
+
+
+<div  class="blacklist-users">
+  <p>ブラックリスト登録済みユーザー</p>
+  <table>
+    <tr>
+      <th>ユーザーID</th> <th>Email</th>
+    </tr>
+    <% @users.each do |user| %>
+      <% if user.flag == false %>
+        <tr>
+          <td><%= user.id %></td> <td><%= user.email %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </table>
 </div>

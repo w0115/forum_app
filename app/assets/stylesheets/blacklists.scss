@@ -1,3 +1,33 @@
 // Place all the styles related to the Blacklists controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.newblacklist-bottom {
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+
+.blacklist-users {
+  margin-top: 60px;
+  p {
+    font-size: 1.2em;
+    text-align: center;
+  }
+}
+
+table {
+  margin: 20px auto;
+  width: 50%;
+  th{
+  padding : 20px 10px;
+  width: 40%;
+  }
+  td{
+  padding : 20px 10px;
+  }
+}
+
+th,td{
+  border:solid 1px #aaaaaa;
+  text-align: center;
+}

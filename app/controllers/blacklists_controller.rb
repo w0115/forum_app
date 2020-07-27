@@ -4,13 +4,13 @@ class BlacklistsController < ApplicationController
   
   def new
     @blacklist = Blacklist.new
+    @users = User.all
   end
   
   def create
     @blacklist = Blacklist.create(blacklist_params)
     @user = User.select("id").where(id: @blacklist.user_id)
     if @user[0].blank?
-      flash[:danger] = "ブラックリストに登録できませんでした"
       redirect_back(fallback_location: new_blacklist_path)
       
     elsif  @blacklist.user_id ==  @user[0].id
@@ -19,10 +19,8 @@ class BlacklistsController < ApplicationController
       Comment.where(user_id: @blacklist.user_id).update_all(:flag => false)
       Topic.where(user_id: @blacklist.user_id).update_all(:flag => false)
       User.where(id: @blacklist.user_id).update_all(:flag => false)
-      flash[:notice] = "ブラックリストに登録しました"
       redirect_to topics_path
     else
-      flash[:danger] = "ブラックリストに登録できませんでした"
       redirect_back(fallback_location: new_blacklist_path)
     end
   end

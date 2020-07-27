@@ -1,25 +1,20 @@
 <% provide(:title, 'Topic 新規作成') %>
+
+<div class="return">
+  <p><%= link_to "←トピック一覧に戻る", topics_path %></p>
+</div>
+  
 <h1>トピック 新規作成</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@topic) do |f| %>
-    
-      <div class="form-group">
+      <div class="center newtopic-bottom">
         <%= f.label :title, "タイトル" %>
         <%= f.text_field :title %>
-      </div>
-      
-      <div class="form-group">
+
         <%= f.submit "トピック作成", class: "btn btn-primary" %>
       </div>
-      
     <% end %>
   </div>
-</div>
-
-</br>
-
-<div class="form-group">
-  <%= link_to "ホームへ戻る", topics_path %>
 </div>

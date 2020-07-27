@@ -16,7 +16,6 @@ class SessionsController < ApplicationController
         redirect_to topics_path
       end
     else
-      flash.now[:danger] = 'メールアドレスもしくはパスワードが違います'
       render 'new' #ログイン画面に戻る
     end
   end
