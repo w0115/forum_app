@@ -21,9 +21,9 @@ class TopicsController < ApplicationController
     @topic = Topic.new(topic_params)
     @topic.user_id = current_user.id
     if @topic.save
-      redirect_to topics_path
+      redirect_to topics_path #←入れ替え
     else
-      redirect_back(fallback_location: new_topic_path)
+      redirect_back(fallback_location: new_topic_path) #←入れ替え
     end
   end
   
