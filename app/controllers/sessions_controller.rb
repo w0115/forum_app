@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       if user.flag == false
         redirect_to ('https://www.google.com')
       else
-        # ユーザーログイン後にトピック一覧のページに飛ぶ
+        # ユーザーログイン後にスレッド一覧のページに飛ぶ
         log_in(user)
         redirect_to topics_path
       end
