@@ -13,16 +13,19 @@ class SessionsController < ApplicationController
       else
         # ユーザーログイン後にスレッド一覧のページに飛ぶ
         log_in(user)
+        flash[:success] = "ログインしました。"
         redirect_to topics_path
       end
     else
+      flash.now[:danger] = "ログインに失敗しました。"
       render 'new' #ログイン画面に戻る
     end
   end
 
   def destroy
     log_out if logged_in?
-    redirect_to root_url and return
+    flash[:success] = "ログアウトしました。"
+    redirect_to root_url
   end
   
 end

@@ -21,9 +21,11 @@ class TopicsController < ApplicationController
     @topic = Topic.new(topic_params)
     @topic.user_id = current_user.id
     if @topic.save
+      flash[:success] = "スレッドを作成しました。"
       redirect_to topics_path
     else
-      redirect_back(fallback_location: new_topic_path)
+      flash[:danger] = "スレッド作成が失敗しました。"
+      redirect_back(fallback_location:new_topic_path)
     end
   end
   
