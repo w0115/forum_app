@@ -24,7 +24,7 @@ class TopicsController < ApplicationController
       flash[:success] = "スレッドを作成しました。"
       redirect_to topics_path
     else
-      flash[:danger] = "スレッド作成が失敗しました。"
+      flash[:danger] = "スレッド作成に失敗しました。"
       redirect_back(fallback_location:new_topic_path)
     end
   end
