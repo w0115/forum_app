@@ -12,7 +12,7 @@ class BlacklistsController < ApplicationController
     @user = User.select("id").where(id: @blacklist.user_id)
     if @user[0].blank?
       redirect_back(fallback_location: new_blacklist_path)
-      
+      flash[:danger] = "ブラックリスト登録に失敗しました。"
     elsif  @blacklist.user_id ==  @user[0].id
       @blacklist.save
       #コメントを非表示になるようにしたりログインできないようにする

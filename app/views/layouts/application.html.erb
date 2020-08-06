@@ -12,13 +12,14 @@
   <%= render 'layouts/shim' %>
 
   <body style="background-color: #e0ffff;">
-      <%= render "layouts/header" %>
+    <%= render "layouts/header" %>
+    
     <div class="container" style="background-color: #fffff0;">
+    <div class="flash">
       <% flash.each do |message_type, message| %>
-        <%= message %>
+        <p><%= message %></p>
       <% end %>
     </div>
-    <div class="container" style="background-color: #fffff0;">
       <main>
         <%= yield %>
       </main>
