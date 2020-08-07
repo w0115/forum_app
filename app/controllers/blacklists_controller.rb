@@ -25,6 +25,10 @@ class BlacklistsController < ApplicationController
       flash[:danger] = "ブラックリスト登録が失敗しました。"
       redirect_back(fallback_location: new_blacklist_path)
     end
+
+    def show
+      @user = User.select("email").where(id: current_user_id)
+    end
   end
   
   private

@@ -4,7 +4,14 @@ class ApplicationController < ActionController::Base
   
   def authenticate_user 
     if session[:user_id] == nil
-      redirect_to("/login")
+      redirect_to ("/login")
+    end
+  end
+
+  def confirm_authenticity_user
+    user = User.find_by(id: current_user.id)
+    if user.flag == false
+      redirect_to ("/blacklists/:user_id")
     end
   end
   

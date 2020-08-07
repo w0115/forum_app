@@ -1,6 +1,6 @@
 class TopicsController < ApplicationController
   before_action :authenticate_user
-  before_action :correct_user,   only: [:delete]
+  before_action :confirm_authenticity_user
   
   def index
     @topics = Topic.all.order(created_at: :desc)

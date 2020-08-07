@@ -15,11 +15,6 @@ class UsersController < ApplicationController
       render 'new'
     end
   end
-
-  def show
-    
-  end
-  
   
   private
     
