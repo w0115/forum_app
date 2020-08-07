@@ -17,7 +17,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user =
+    @user = User.find_by(id: user_id)
+    @topic = Topic.where(user_id: @user)
+    @comment = Comment.where(user_id: @user)
   end
   
   private
