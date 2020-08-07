@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   def confirm_authenticity_user
     user = User.find_by(id: current_user.id)
     if user.flag == false
-      redirect_to ("/blacklists/:user_id")
+      redirect_to ("/blacklists/:id/edit")
     end
   end
   

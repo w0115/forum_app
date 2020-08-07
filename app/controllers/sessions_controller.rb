@@ -10,13 +10,13 @@ class SessionsController < ApplicationController
         log_in(user)
         #ログインしようとしているユーザーがブラックリストに入っているか確認する
         if user.flag == false
-          redirect_to ("/blacklists/:id")
+          redirect_to ("/blacklists/:id/edit")
         else
           flash[:success] = "ログインしました。"
           redirect_to topics_path
         end
     else
-      flash.now[:danger] = "ログインに失敗しました。"
+      flash.now[:danger] = "Emailもしくはパスワードが違います。"
       render 'new' #ログイン画面に戻る
     end
   end

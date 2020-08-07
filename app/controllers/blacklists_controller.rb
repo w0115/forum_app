@@ -26,9 +26,9 @@ class BlacklistsController < ApplicationController
       redirect_back(fallback_location: new_blacklist_path)
     end
 
-    def show
-      @user = User.select("email").where(id: current_user_id)
+    def index
     end
+
   end
   
   private
