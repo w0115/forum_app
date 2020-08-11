@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  
+  before_action :admin_user, only: [:show]
+
   def new
     @user = User.new
   end
@@ -17,7 +18,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(id: user_id)
+    @user = User.find_by(id: params[:id])
     @topic = Topic.where(user_id: @user)
     @comment = Comment.where(user_id: @user)
   end
@@ -28,4 +29,9 @@ class UsersController < ApplicationController
       params.require(:user).permit(:email, :password,
                                    :password_confirmation)
     end
+
+    def admin_user
+      redirect_to topics_path unless current_user.admin?
+    end
+
 end

@@ -26,8 +26,6 @@ class BlacklistsController < ApplicationController
       redirect_back(fallback_location: new_blacklist_path)
     end
 
-    def index
-    end
 
   end
   
