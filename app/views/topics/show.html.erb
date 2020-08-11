@@ -1,9 +1,5 @@
 <% provide(:title, @topic.title) %>
 
-  <div class="return">
-    <p><%= link_to "←スレッド一覧に戻る", topics_path %></p>
-  </div>
-  
   <div class="tag">
     <h1><%= @topic.title %></h1>
     <% if current_user == @user || current_user.admin? %>

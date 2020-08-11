@@ -1,11 +1,8 @@
 <% provide(:title, 'スレッド 新規作成') %>
 
-<div class="return">
-  <p><%= link_to "←スレッド一覧に戻る", topics_path %></p>
+<div class="topic_new_create">
+  <h1>スレッド 新規作成</h1>
 </div>
-  
-<h1>スレッド 新規作成</h1>
-
     
 <div class="center newtopic-bottom">
   <%= form_for(@topic) do |f| %>
