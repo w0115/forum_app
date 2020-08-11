@@ -1,0 +1,21 @@
+<% provide(:title, @user_email) %>
+
+<h1>ユーザーID:<%= @user.id %>&emsp;<%= @user.email %></h1>
+
+<div class="user_create_topic">
+  <% if @topic.count != 0 %>
+    <h2>作成したスレッド一覧</h2>
+    <% @topic.each do |topic| %>
+      <p><%= link_to topic.title, topic %></p>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="user_comment">
+	<% if @comment.count != 0 %>
+		<h2>コメント一覧</h2>
+		<% @comment.each do |comment| %>
+			<p><%= @comment %></p>
+		<% end %>
+	<% end %>
+</div>

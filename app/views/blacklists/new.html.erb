@@ -9,14 +9,11 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@blacklist) do |f| %>
-      
       <div class="center newblacklist-bottom">
         <%= f.label :user_id, "ユーザーID:" %>
         <%= f.text_field :user_id %>
-      
-      <%= f.submit "ブラックリスト登録", class: "btn btn-primary" %>
+        <%= f.submit "ブラックリスト登録", class: "btn btn-primary" %>
       </div>
-      
     <% end %>
   </div>
 </div>
@@ -28,7 +25,9 @@
     <% @users.each do |user| %>
       <% if user.flag != false %>
         <tr>
-          <td><%= user.id %></td> <td><%= user.email %></td>
+          <td><%= user.id %></td> 
+          <td><%= user.email %></td> 
+          <td><%= link_to '詳細', "/users/#{user.id}" %></td>
         </tr>
       <% end %>
     <% end %>
@@ -45,7 +44,9 @@
     <% @users.each do |user| %>
       <% if user.flag == false %>
         <tr>
-          <td><%= user.id %></td> <td><%= user.email %></td>
+          <td><%= user.id %></td> 
+          <td><%= user.email %></td> 
+          <td><%= link_to '詳細', "/users/#{user.id}" %></td>
         </tr>
       <% end %>
     <% end %>
