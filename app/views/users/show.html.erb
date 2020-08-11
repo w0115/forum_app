@@ -15,7 +15,7 @@
 	<% if @comment.count != 0 %>
 		<h2>コメント一覧</h2>
 		<% @comment.each do |comment| %>
-			<p><%= @comment %></p>
+			<p><%= @comment.connection %></p>
 		<% end %>
 	<% end %>
 </div>
